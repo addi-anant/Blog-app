@@ -4,7 +4,7 @@ const app = express();
 // const mongoose = require("mongoose");
 // const multer = require("multer");
 // const path = require("path");
-var port = 3000;
+var port = 8000;
 //Route Imports:
 // const authRoute = require("./routes/auth");
 // const userRoute = require("./routes/users");
@@ -42,5 +42,5 @@ app.use("/", (req, res) => {
 // app.use("/api/categories", categoryRoute);
 
 app.listen(port, () => {
-  console.log("Backend is running on port 8080.");
+  console.log("Backend is running on port 8000.");
 });
