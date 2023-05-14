@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "aadiblogs.azurewebsites.net/"
+  "proxy": "https://aadiblogs.azurewebsites.net/"
 }
