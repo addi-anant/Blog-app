@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import { useContext } from 'react';
 import { Context } from '../../context/Context';
+import { axiosBaseURL } from '../../utils/axiosBaseUrl';
 
 function SinglePost() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function SinglePost() {
   const [post, setPost] = useState({});
   useEffect(() => {
     const getPost = async () => {
-        const res = await axios.get('/posts/' + path);
+        const res = await axiosBaseURL.get('posts/' + path);
         setPost(res.data);
         setTitle(res.data.title);
         setDesc(res.data.desc);
@@ -29,11 +30,11 @@ function SinglePost() {
   }, [path])
 
   const { user } = useContext(Context);
-  const PF = 'http://localhost:5000/images/'
+  const PF = 'https://aadiblogs.azurewebsites.net/images/'
    
   const handleDelete = async () => {
     try {
-        await axios.delete(`/posts/${post._id}`, {
+        await axiosBaseURL.delete(`posts/${post._id}`, {
             data: {username: user.username}
         });
         window.location.replace('/');
@@ -42,7 +43,7 @@ function SinglePost() {
 
   const handleUpdate = async () => {
     try{
-        await axios.put(`/posts/${post._id}`, {
+        await axiosBaseURL.put(`posts/${post._id}`, {
             username: user.username, title, desc
         });
         setUpdateMode(false);

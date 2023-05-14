@@ -3,6 +3,7 @@ import './settings.css'
 import Sidebar from '../../components/sidebar/Sidebar'
 import { Context } from '../../context/Context'
 import axios from 'axios'
+import { axiosBaseURL } from '../../utils/axiosBaseUrl'
 
 function Settings() {
   const { user, dispatch } = useContext(Context);
@@ -36,12 +37,12 @@ function Settings() {
       updatedUser.profilePic = filename;
 
       try{
-        await axios.post('/upload', data);
+        await axiosBaseURL.post('upload', data);
       }catch(err){}
     }
 
     try{
-      const res = await axios.put('/users/' + user._id, updatedUser);
+      const res = await axiosBaseURL.put('users/' + user._id, updatedUser);
       setSuccess(true); // useState
       dispatch({
         type: 'UPDATE_SUCCESS',
@@ -55,7 +56,7 @@ function Settings() {
     }
   }
 
-  const PF = 'http://localhost:5000/images/';
+  const PF = 'https://aadiblogs.azurewebsites.net/images/';
   return (
     <div className='settings'>
       <div className="settingsWrapper">

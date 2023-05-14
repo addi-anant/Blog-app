@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useRef, useContext } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
+import { axiosBaseURL } from "../../utils/axiosBaseUrl";
 
 function Login() {
   const userRef = useRef();
@@ -18,7 +19,7 @@ function Login() {
     });
 
     try {
-      const res = await axios.post("/auth/login", {
+      const res = await axiosBaseURL.post("auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });

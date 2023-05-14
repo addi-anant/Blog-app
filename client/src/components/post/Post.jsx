@@ -3,7 +3,7 @@ import './post.css'
 import {Link} from 'react-router-dom'
 
 function Post({post}) {
-  const PF = 'http://localhost:5000/images/'
+  const PF = 'https://aadiblogs.azurewebsites.net/images/'
   return (
     <div className='post'>
         {post.photo && (

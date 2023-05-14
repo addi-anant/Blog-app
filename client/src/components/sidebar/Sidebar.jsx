@@ -4,13 +4,14 @@ import { useState } from "react";
 import "./sidebar.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { axiosBaseURL } from "../../utils/axiosBaseUrl";
 
 function Sidebar() {
   const [cats, setCats] = useState([]);
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
+      const res = await axiosBaseURL.get("categories");
       setCats(res.data);
     };
 

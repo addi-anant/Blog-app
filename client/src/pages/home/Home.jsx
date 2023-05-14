@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
+import { axiosBaseURL } from "../../utils/axiosBaseUrl";
 import Header from '../../components/header/Header'
 import Posts from '../../components/posts/Posts'
 import Sidebar from '../../components/sidebar/Sidebar'
@@ -14,7 +15,7 @@ function Home() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get('/posts' + search)
+      const res = await axiosBaseURL.get('posts' + search)
       setPosts(res.data);
     }
 

@@ -4,6 +4,7 @@ import './write.css'
 import axios from 'axios'
 import { useContext } from 'react';
 import { Context } from '../../context/Context'
+import { axiosBaseURL } from '../../utils/axiosBaseUrl';
 
 function Write() {
   const [title, setTitle] = useState("");
@@ -30,12 +31,12 @@ function Write() {
         newPost.photo = filename;
 
         try{
-            await axios.post('/upload', data);
+            await axiosBaseURL.post('upload', data);
         }catch(err){}
     }
 
     try{
-        const res = await axios.post('/posts', newPost);
+        const res = await axiosBaseURL.post('posts', newPost);
         window.location.replace('/post/' + res.data._id)
     }catch(err){}
   }
